@@ -533,3 +533,52 @@ def mask_fill_flattened(flat_array, mask):
             start_index = end_index
 
     return filled
+
+#ADDED THIS
+class SecondaryVertexChargeTask(ClassificationTask):
+    def __init__(self, label: str, **kwargs):
+        """Secondary vertex charge classification task.
+
+        Parameters
+        ----------
+        label : str
+            Label name for the secondary vertex charge.
+        **kwargs
+            Keyword arguments for [`salt.models.ClassificationTask`][salt.models.ClassificationTask].
+        """
+        super().__init__(**kwargs)
+        self.label = label
+
+    def forward(
+        self,
+        x: Tensor,
+        labels_dict: Mapping,
+        pad_masks: Tensor = None,
+        context: Tensor = None,
+    ):
+        if pad_masks is not None:
+            input_name_mask = self.input_name_mask(pad_masks)
+            mask = pad_masks[self.input_name]
+            x = x[:, input_name_mask]
+        else:
+            mask = None
+
+        preds = self.net(x, context)
+        labels = labels_dict[self.input_name][self.label] if labels_dict else None
+
+        loss = None
+        if labels is not None:
+            loss = self.loss(preds, labels)
+            loss *= self.weight
+
+        return preds, loss
+
+    def run_inference(self, preds: Tensor, pad_mask: Tensor | None = None, precision: str = "f4"):
+        if pad_mask is None:
+            assert preds.ndim == 2
+            probs = torch.softmax(preds, dim=-1)
+        else:
+            assert preds.ndim == 3
+            probs = masked_softmax(preds, pad_mask.unsqueeze(-1))
+        dtype = np.dtype([(self.label, precision)])
+        return u2s(probs.float().cpu().numpy(), dtype)

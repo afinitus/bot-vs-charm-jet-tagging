@@ -45,10 +45,10 @@ model:
                 label: flavour_label
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 2.0, 2.0, 16.8] }
+                  init_args: { weight: [1.0, 2.0, 2.0] }
                 dense_config: &task_dense_config
                   input_size: *out_dim
-                  output_size: 4
+                  output_size: 3
                   hidden_layers: [128, 64, 32]
                   activation: *activation
 
@@ -110,17 +110,18 @@ data:
       #- numberOfTRTHits
       #- leptonID
 
-  train_file: /home/xzcappon/phd/datasets/combined_run2_run3/p5770/high_stats_320m/output/pp_output_train.h5
-  val_file: /home/xzcappon/phd/datasets/combined_run2_run3/p5770/high_stats_320m/output/pp_output_val.h5
-  norm_dict: /home/xzcappon/phd/datasets/combined_run2_run3/p5770/high_stats_320m/output/norm_dict.yaml
-  class_dict: /home/xzcappon/phd/datasets/combined_run2_run3/p5770/high_stats_320m/output/class_dict.yaml
+  train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_resamp/output/pp_output_train.h5
+  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_resamp/output/pp_output_val.h5
+  norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_resamp/output/norm_dict.yaml
+  class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_resamp/output/class_dict.yaml
   #move_files_temp: /dev/shm/svanstro/salt/gn2/
 
-  batch_size: 4000
+  batch_size: 2000
   num_workers: 40
 
 trainer:
   max_epochs: 40
   accelerator: gpu
-  devices: 1
+  devices: 4
   precision: 16-mixed
+  accumulate_grad_batches: 2
