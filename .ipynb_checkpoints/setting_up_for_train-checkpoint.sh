@@ -1,0 +1,3 @@
+source setup/setup_conda.sh
+conda activate salt
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
