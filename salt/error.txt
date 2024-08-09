@@ -1,0 +1,54 @@
+(salt) nishank@nid200260:/pscratch/sd/n/nishank/shapiro_pi2/salt/salt> python hl_plotter_bottom_new.py 
+INFO:puma: Loading taggers.
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/plot_base.py:419: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
+  self.axis_top.set_yscale("log")
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+WARNING:puma: Histogram is empty.
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/histogram.py:761: RuntimeWarning: invalid value encountered in subtract
+  y1=np.nan_to_num(ratio - ratio_unc, nan=0, posinf=0),
+/pscratch/sd/n/nishank/shapiro_pi2/salt/conda/envs/salt/lib/python3.11/site-packages/puma/plot_base.py:419: UserWarning: Data has no positive values, and therefore cannot be log-scaled.
+  self.axis_top.set_yscale("log")
