@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Job name
-#SBATCH --job-name=salt
+#SBATCH --job-name=gn2_charge_reco
 
 # choose the GPU queue
 #SBATCH --qos=regular
@@ -34,4 +34,4 @@ echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES"
 
 # run the training
 echo "Running training script..."
-srun salt fit --config /pscratch/sd/n/nishank/shapiro_pi2/salt/salt/configs/GN2_charge_reco.yaml
+srun salt fit --config /pscratch/sd/n/nishank/shapiro_pi2/salt/salt/configs/GN2_charge_reco.yaml -n 4 --force

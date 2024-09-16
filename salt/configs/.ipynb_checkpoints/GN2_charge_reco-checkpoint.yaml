@@ -45,7 +45,7 @@ model:
                 label: flavour_label
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 2.0, 2.0] }
+                  init_args: { weight: [1.0, 1.0, 1.0] }
                 dense_config: &task_dense_config
                   input_size: *out_dim
                   output_size: 3
@@ -84,14 +84,18 @@ model:
 
             - class_path: salt.models.ClassificationTask
               init_args:
-                name: secondary_vertex_charge
+                name: charge_classification
                 input_name: jets
                 label: quarkCharge
+                weight: 1.0
+                label_map: { -1: 0, 0: 1, 1: 2 }
+                class_names: [p_negquark, p_lightquark, p_posquark]
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
+                  init_args: { weight: [1.0, 1.0, 1.0] }
                 dense_config:
                   <<: *task_dense_config
-                  output_size: 1
+                  output_size: 3
 
 data:
   variables:
@@ -122,7 +126,7 @@ data:
       #- leptonID
 
   train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_train.h5
-  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/pp_output_val.h5
+  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_val.h5
   norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/norm_dict.yaml
   class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/class_dict.yaml
   #move_files_temp: /dev/shm/svanstro/salt/gn2/

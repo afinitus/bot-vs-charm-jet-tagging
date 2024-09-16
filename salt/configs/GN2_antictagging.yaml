@@ -1,4 +1,4 @@
-name: GN2_charge_reco
+name: GN2_antic
 
 model:
   lrs_config:
@@ -38,19 +38,33 @@ model:
         class_path: torch.nn.ModuleList
         init_args:
           modules:
+            # - class_path: salt.models.ClassificationTask
+            #   init_args:
+            #     name: jets_classification
+            #     input_name: jets
+            #     label: flavour_label
+            #     loss:
+            #       class_path: torch.nn.CrossEntropyLoss
+            #       init_args: { weight: [1.0, 2.0, 2.0] }
+            #     dense_config: &task_dense_config
+            #       input_size: *out_dim
+            #       output_size: 3
+            #       hidden_layers: [128, 64, 32]
+            #       activation: *activation
             - class_path: salt.models.ClassificationTask
               init_args:
-                name: jets_classification
+                name: charge_classification
                 input_name: jets
-                label: flavour_label
+                label: quarkCharge
+                label_map: { -1: 0, 1: 1 }
+                class_names: [p_negquark, p_posquark]
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 1.0, 1.0] }
                 dense_config: &task_dense_config
-                  input_size: *out_dim
-                  output_size: 3
-                  hidden_layers: [128, 64, 32]
-                  activation: *activation
+                   input_size: *out_dim
+                   hidden_layers: [128, 64, 32]
+                   activation: *activation
+                   output_size: 2
 
             - class_path: salt.models.ClassificationTask
               init_args:
@@ -63,9 +77,9 @@ model:
                   init_args:
                     weight: [4.2, 73.7, 1.0, 17.5, 12.3, 12.5, 141.7, 22.3]
                 dense_config:
-                  <<: *task_dense_config
-                  output_size: 8
-                  context_size: *out_dim
+                   <<: *task_dense_config
+                   output_size: 8 
+                   context_size: *out_dim
 
             - class_path: salt.models.VertexingTask
               init_args:
@@ -81,21 +95,6 @@ model:
                   input_size: 256
                   output_size: 1
                   context_size: *out_dim
-
-            - class_path: salt.models.ClassificationTask
-              init_args:
-                name: charge_classification
-                input_name: jets
-                label: quarkCharge
-                weight: 1.0
-                label_map: { -1: 0, 0: 1, 1: 2 }
-                class_names: [p_negquark, p_lightquark, p_posquark]
-                loss:
-                  class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 1.0, 1.0] }
-                dense_config:
-                  <<: *task_dense_config
-                  output_size: 3
 
 data:
   variables:
@@ -125,17 +124,17 @@ data:
       #- numberOfTRTHits
       #- leptonID
 
-  train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_train.h5
-  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_val.h5
-  norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/norm_dict.yaml
-  class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/class_dict.yaml
+  train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/30M_wjets_c_new/output/pp_output_train.h5
+  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/30M_wjets_c_new/output/pp_output_val.h5
+  norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/30M_wjets_c_new/output/norm_dict.yaml
+  class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/30M_wjets_c_new/output/class_dict.yaml
   #move_files_temp: /dev/shm/svanstro/salt/gn2/
 
   batch_size: 2000
   num_workers: 40
 
 trainer:
-  max_epochs: 40
+  max_epochs: 80
   accelerator: gpu
   devices: 4
   precision: 16-mixed

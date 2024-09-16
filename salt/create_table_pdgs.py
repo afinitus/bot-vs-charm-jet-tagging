@@ -40,7 +40,7 @@ def create_particle_table(jets, probs, particle_type):
     
     # 70% b eff
     b_disc_sorted = np.sort(b_discs[bottom_mask])
-    b_cut = b_disc_sorted[int(len(b_disc_sorted)*0.7)]
+    b_cut = b_disc_sorted[int(len(b_disc_sorted)*0.1)]
     
     # Masking
     mask_c_efficiency = c_discs > c_cut

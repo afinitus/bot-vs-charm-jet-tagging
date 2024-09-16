@@ -38,26 +38,35 @@ model:
         class_path: torch.nn.ModuleList
         init_args:
           modules:
+            # - class_path: salt.models.ClassificationTask
+            #   init_args:
+            #     name: jets_classification
+            #     input_name: jets
+            #     label: flavour_label
+            #     loss:
+            #       class_path: torch.nn.CrossEntropyLoss
+            #       init_args: { weight: [1.0, 2.0, 2.0] }
+            #     dense_config: &task_dense_config
+            #       input_size: *out_dim
+            #       output_size: 3
+            #       hidden_layers: [128, 64, 32]
+            #       activation: *activation
             - class_path: salt.models.ClassificationTask
               init_args:
-                name: jets_classification
+                name: secondary_vertex_charge
                 input_name: jets
-                label: flavour_label
+                label: quarkCharge
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 1.0, 1.0] }
-                dense_config: &task_dense_config
-                  input_size: *out_dim
+                dense_config:
+                  <<: *task_dense_config
                   output_size: 3
-                  hidden_layers: [128, 64, 32]
-                  activation: *activation
 
             - class_path: salt.models.ClassificationTask
               init_args:
                 name: track_origin
                 input_name: tracks
                 label: ftagTruthOriginLabel
-                weight: 0.5
                 loss:
                   class_path: torch.nn.CrossEntropyLoss
                   init_args:
@@ -81,21 +90,6 @@ model:
                   input_size: 256
                   output_size: 1
                   context_size: *out_dim
-
-            - class_path: salt.models.ClassificationTask
-              init_args:
-                name: charge_classification
-                input_name: jets
-                label: quarkCharge
-                weight: 1.0
-                label_map: { -1: 0, 0: 1, 1: 2 }
-                class_names: [p_negquark, p_lightquark, p_posquark]
-                loss:
-                  class_path: torch.nn.CrossEntropyLoss
-                  init_args: { weight: [1.0, 1.0, 1.0] }
-                dense_config:
-                  <<: *task_dense_config
-                  output_size: 3
 
 data:
   variables:
@@ -135,8 +129,8 @@ data:
   num_workers: 40
 
 trainer:
-  max_epochs: 40
+  max_epochs: 1
   accelerator: gpu
-  devices: 4
+  devices: 1
   precision: 16-mixed
   accumulate_grad_batches: 2
