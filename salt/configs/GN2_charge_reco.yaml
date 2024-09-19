@@ -125,10 +125,10 @@ data:
       #- numberOfTRTHits
       #- leptonID
 
-  train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_train.h5
-  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/pp_output_val.h5
-  norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/norm_dict.yaml
-  class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new/output/class_dict.yaml
+  train_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new_charge/output/pp_output_train.h5
+  val_file: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new_charge/output/pp_output_val.h5
+  norm_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new_charge/output/norm_dict.yaml
+  class_dict: /global/cfs/cdirs/atlas/jmw464/nishank_pi2/upp_samples/90M_wjets_new_charge/output/class_dict.yaml
   #move_files_temp: /dev/shm/svanstro/salt/gn2/
 
   batch_size: 2000
